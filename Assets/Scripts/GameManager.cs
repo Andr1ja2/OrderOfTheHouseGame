@@ -12,15 +12,23 @@ public class GameManager : MonoBehaviour
     public InputController inputController;
     public DialogueController dialogueController;
     public InventoryController inventoryController;
-    //public PlayerController playerController;
+    public RoomController roomController;
+    public Clock clock;
+    public PlayerController playerController;
+    public LevelController levelController;
+    public Lightswitch ligthswitch;
+    public PinBoard pinBoard;
 
     public Tilemap floorTilemap;
     public Tilemap[] collisionTilemaps;
+    public Tilemap carpetTilemap;
 
     public UnityAction<KeyCode> MovePlayer;
     public UnityAction SkipDialogue;
     public UnityAction PushAction;
     public UnityAction DetectJunk;
+    public UnityAction<GameObject> DetectRoom;
+    public UnityAction ResetValues;
 
     private void Awake()
     {
@@ -35,10 +43,5 @@ public class GameManager : MonoBehaviour
         }
 
         JunkDetector.AllJunkDetectors = FindObjectsOfType<JunkDetector>();
-    }
-
-    private void Update()
-    {
-        
     }
 }

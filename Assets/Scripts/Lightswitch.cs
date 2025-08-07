@@ -9,6 +9,11 @@ public class Lightswitch : MonoBehaviour
 
     [SerializeField] Image Darkness;
 
+    private void Start()
+    {
+        GameManager.instance.ResetValues += ResetValues;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -30,8 +35,15 @@ public class Lightswitch : MonoBehaviour
         var tempColor = Darkness.color;
         tempColor.a = 0;
         Darkness.color = tempColor;
+        InputController.actionsEnabled = true;
 
-        GameManager.instance.dialogueController.dialogue.lines = (string[])ligthsOnLines.Clone();
-        GameManager.instance.dialogueController.dialogue.Activate();
+        GameManager.instance.dialogueController.StartDialogue((string[])ligthsOnLines.Clone());
+    }
+
+    public void ResetValues()
+    {
+        var tempColor = Darkness.color;
+        tempColor.a = 0.8f;
+        Darkness.color = tempColor;
     }
 }

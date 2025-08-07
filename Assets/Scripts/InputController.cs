@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+    public static bool actionsEnabled = true;
+
     private void Update()
     {
-        if (!GameManager.instance.dialogueController.DialogueIsActive())
+        if (!GameManager.instance.dialogueController.DialogueIsActive() && actionsEnabled) // <- other script should take care of this logic
         {
             if (Input.GetKeyDown(KeyCode.W))
             {

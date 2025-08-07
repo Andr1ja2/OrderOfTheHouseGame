@@ -10,6 +10,12 @@ public class InventoryController : MonoBehaviour
 
     private void Start()
     {
+        ResetValues();
+        GameManager.instance.ResetValues += ResetValues;
+    }
+
+    public void ResetValues()
+    {
         hasKey = false;
         hasBoots = false;
         hasJacket = false;

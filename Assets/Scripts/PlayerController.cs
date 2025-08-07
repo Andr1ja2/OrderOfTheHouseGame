@@ -5,11 +5,17 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
+
     public Vector2 FacingDirection;
     public JunkDetector JunkDetector;
 
     Animator animator;
     SpriteRenderer spriteRenderer;
+
+    public static int stepCount = 0;
+
+    Vector3 startposition;
+    bool die;
 
     private void PushJunk()
     {
@@ -53,18 +59,20 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        startposition = transform.position;
         FacingDirection = Vector2.down;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         GameManager.instance.MovePlayer += ReturnDirection;
         GameManager.instance.PushAction += PushJunk;
+        GameManager.instance.ResetValues += ResetValues;
     }
 
     private void ReturnDirection(KeyCode key)
     {
         Vector2 dir = Vector2.right;
-        switch(key)
+        switch (key)
         {
             case KeyCode.W:
                 dir = Vector2.up;
@@ -91,8 +99,19 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Move");
             transform.position += (Vector3)dir;
-
+            stepCount++;
             JunkDetector.RefreshJunk();
+
+            if (die)
+            {
+                string deathText = GameManager.instance.pinBoard.hasRule3 ? string.Empty : "Dad doesn't like it when I get mud on the carpets";
+                GameManager.instance.levelController.Death(deathText, 3);
+            }
+            else if (stepCount > 50)
+            {
+                string deathText = GameManager.instance.pinBoard.hasRule2 ? string.Empty : "I think dad gets realy mad when I make a lot of noise";
+                GameManager.instance.levelController.Death(deathText, 2);
+            }
         }
     }
 
@@ -101,8 +120,11 @@ public class PlayerController : MonoBehaviour
         // Check if the side it's moving to is blocked
         if (JunkDetector.BlockedSides.Contains(dir)) return false;
 
-        // Checks if the tile it's moving to has a floor tile and no collision tile
         Vector3Int gridPosition = GameManager.instance.floorTilemap.WorldToCell(transform.position + (Vector3)dir);
+        // Set bool to kill player if he steps on a carpet with muddy boots
+        if (GameManager.instance.carpetTilemap.HasTile(gridPosition) && GameManager.instance.inventoryController.hasBoots) die = true;
+
+        // Checks if the tile it's moving to has a floor tile and no collision tile
         if (!GameManager.instance.floorTilemap.HasTile(gridPosition))
         {
             return false;
@@ -111,7 +133,15 @@ public class PlayerController : MonoBehaviour
         {
             if (tm.HasTile(gridPosition)) return false;
         }
-        
+
         return true;
+    }
+
+    public void ResetValues()
+    {
+        FacingDirection = Vector2.down;
+        transform.position = startposition;
+        stepCount = 0;
+        die = false;
     }
 }

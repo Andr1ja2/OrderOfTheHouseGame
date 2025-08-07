@@ -22,14 +22,12 @@ public class EndScript : MonoBehaviour
             }
             else
             {
-                GameManager.instance.dialogueController.dialogue.lines = (string[])linesNoClothes.Clone();
-                GameManager.instance.dialogueController.dialogue.Activate();
+                GameManager.instance.dialogueController.StartDialogue((string[])linesNoClothes.Clone());
             }
         }
         else
         {
-            GameManager.instance.dialogueController.dialogue.lines = (string[])linesNoKey.Clone();
-            GameManager.instance.dialogueController.dialogue.Activate();
+            GameManager.instance.dialogueController.StartDialogue((string[])linesNoKey.Clone());
         }
     }
 

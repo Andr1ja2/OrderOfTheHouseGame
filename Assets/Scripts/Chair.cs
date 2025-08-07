@@ -6,16 +6,19 @@ public class Chair : MonoBehaviour
 {
     public string[] firstChairLines;
 
-    JunkScript script;
     GameObject key;
     bool canCollectKey;
     bool canClimbChair;
+
+    Vector3 startposition;
 
     private void Start()
     {
         GameManager.instance.PushAction += CollectKey;
         key = GameObject.FindGameObjectWithTag("Key");
-        script = GetComponent<JunkScript>();
+
+        startposition = transform.position;
+        GameManager.instance.ResetValues += ResetValues;
     }
 
     private void CollectKey()
@@ -49,5 +52,12 @@ public class Chair : MonoBehaviour
         {
             canClimbChair = false;
         }
+    }
+
+    public void ResetValues()
+    {
+        canCollectKey = false;
+        canClimbChair = false;
+        transform.position = startposition;
     }
 }

@@ -34,20 +34,28 @@ public class Dialogue : MonoBehaviour
         {
             invisible.a = 0.7f;
             dialogueboxImage.color = invisible;
+            InputController.actionsEnabled = false;
             StartDialogue();
         }
     }
 
     private void Skip()
     {
-        if (textComponent.text == lines[index])
+        if (dialogueboxImage.color.a != 0)
         {
-            NextLine();
+            if (textComponent.text == lines[index])
+            {
+                NextLine();
+            }
+            else
+            {
+                StopAllCoroutines();
+                textComponent.text = lines[index];
+            }
         }
         else
         {
-            StopAllCoroutines();
-            textComponent.text = lines[index];
+            GameManager.instance.levelController.headerText.SetActive(false);
         }
     }
 
@@ -74,12 +82,13 @@ public class Dialogue : MonoBehaviour
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
-        else
+        else // disabling dialoguebox using alpha because game lags when using SetActive for some reason
         {
             invisible.a = 0;
             dialogueboxImage.color = invisible;
             textComponent.text = string.Empty;
             Array.Clear(lines, 0, lines.Length);
+            InputController.actionsEnabled = true;
         }
     }
 }

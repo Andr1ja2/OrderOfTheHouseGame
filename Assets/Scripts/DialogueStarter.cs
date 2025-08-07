@@ -6,13 +6,14 @@ public class DialogueStarter : MonoBehaviour
 {
     public string[] lines;
 
+    [SerializeField] bool oneTime;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.dialogueController.dialogue.lines = (string[])lines.Clone(); ;
-            GameManager.instance.dialogueController.dialogue.Activate();
-            Destroy(gameObject);
+            GameManager.instance.dialogueController.StartDialogue((string[])lines.Clone()); ;
+            if (oneTime) Destroy(gameObject);
         }
     }
 }
