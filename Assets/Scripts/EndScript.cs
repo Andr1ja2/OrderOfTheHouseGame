@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class EndScript : MonoBehaviour
 {
     [SerializeField] string[] linesNoKey;
     [SerializeField] string[] linesNoClothes;
 
-    private void EndLevel()
+    private IEnumerator EndLevel()
     {
-        Debug.Log("won");
+        GameManager.instance.fadeEffectAnimator.SetTrigger("fadeIn");
+        yield return new WaitForSecondsRealtime(GameManager.instance.fadeEffectAnimator.GetCurrentAnimatorStateInfo(0).length);
+        SceneManager.LoadScene("EndScene");
     }
 
     private void OpenDoor()
@@ -18,7 +22,7 @@ public class EndScript : MonoBehaviour
         {
             if (GameManager.instance.inventoryController.hasBoots && GameManager.instance.inventoryController.hasJacket)
             {
-                EndLevel();
+                StartCoroutine(EndLevel());
             }
             else
             {

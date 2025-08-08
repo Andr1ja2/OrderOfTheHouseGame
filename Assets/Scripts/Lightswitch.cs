@@ -35,7 +35,6 @@ public class Lightswitch : MonoBehaviour
         var tempColor = Darkness.color;
         tempColor.a = 0;
         Darkness.color = tempColor;
-        InputController.actionsEnabled = true;
 
         GameManager.instance.dialogueController.StartDialogue((string[])ligthsOnLines.Clone());
     }

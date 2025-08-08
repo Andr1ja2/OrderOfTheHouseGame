@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 FacingDirection;
     public JunkDetector JunkDetector;
+    public Animator animator;
 
-    Animator animator;
     SpriteRenderer spriteRenderer;
 
     public static int stepCount = 0;

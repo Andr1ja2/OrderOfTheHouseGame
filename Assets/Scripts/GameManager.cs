@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public LevelController levelController;
     public Lightswitch ligthswitch;
     public PinBoard pinBoard;
+    public Animator fadeEffectAnimator;
 
     public Tilemap floorTilemap;
     public Tilemap[] collisionTilemaps;
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
     public UnityAction DetectJunk;
     public UnityAction<GameObject> DetectRoom;
     public UnityAction ResetValues;
+    public UnityAction PauseGame;
 
     private void Awake()
     {

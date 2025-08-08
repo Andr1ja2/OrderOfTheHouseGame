@@ -23,8 +23,11 @@ public class LevelController : MonoBehaviour
 
     private void NoteOff()
     {
-        noteCanvas.SetActive(false);
-        InputController.actionsEnabled = true;
+        if (noteCanvas.activeSelf)
+        {
+            noteCanvas.SetActive(false);
+            InputController.actionsEnabled = true;
+        }
     }
 
     public void PickUpNote(PaperNote note, int rulenumber)
@@ -53,6 +56,8 @@ public class LevelController : MonoBehaviour
     public void Death(string noteText, int rulenumber) // add fade effect
     {
         InputController.actionsEnabled = false;
+        GameManager.instance.playerController.animator.enabled = false;
+        GameManager.instance.fadeEffectAnimator.SetTrigger("fadeIn");
         GameObject spawnedNote = null;
         if (noteText != string.Empty)
         {
@@ -68,11 +73,14 @@ public class LevelController : MonoBehaviour
 
     IEnumerator WaitForDeath(GameObject spawnedNote)
     {
-        yield return new WaitForSecondsRealtime(2);
+        // Ensures screen is balck when player is moving back to start position
+        yield return new WaitForSecondsRealtime(GameManager.instance.fadeEffectAnimator.GetCurrentAnimatorStateInfo(0).length); 
         GameManager.instance.ResetValues.Invoke();
         if (spawnedNote != null) spawnedNote.SetActive(true);
         JunkDetector.RefreshAllJunk();
         SceneManager.LoadScene("HouseScene");
+        GameManager.instance.playerController.animator.enabled = true;
+        GameManager.instance.fadeEffectAnimator.SetTrigger("fadeOut"); // FadeOut is called only after the scene is loaded
         InputController.actionsEnabled = true;
     }
 }

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    public static bool actionsEnabled = true;
+    [SerializeField] public static bool actionsEnabled = true;
 
     private void Update()
     {
-        if (!GameManager.instance.dialogueController.DialogueIsActive() && actionsEnabled) // <- other script should take care of this logic
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.instance.PauseGame.Invoke();
+        }
+        else if (actionsEnabled)
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
