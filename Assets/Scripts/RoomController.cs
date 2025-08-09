@@ -23,6 +23,7 @@ public class RoomController : MonoBehaviour
     {
         currentRoom = room;
         PlayerController.stepCount = 0;
+        GameManager.instance.stepCounter.text = "00";
     }
 
     public void ResetValues()

@@ -9,9 +9,12 @@ public class Lightswitch : MonoBehaviour
 
     [SerializeField] Image Darkness;
 
+    float initialDarkness;
+
     private void Start()
     {
         GameManager.instance.ResetValues += ResetValues;
+        initialDarkness = Darkness.color.a;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,7 +45,7 @@ public class Lightswitch : MonoBehaviour
     public void ResetValues()
     {
         var tempColor = Darkness.color;
-        tempColor.a = 0.8f;
+        tempColor.a = initialDarkness;
         Darkness.color = tempColor;
     }
 }

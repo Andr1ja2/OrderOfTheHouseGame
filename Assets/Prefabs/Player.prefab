@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4335335227828879031}
   m_Layer: 0
   m_Name: JunkDetector
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,6 +199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FacingDirection: {x: 0, y: 0}
   JunkDetector: {fileID: 4335335227828879031}
+  animator: {fileID: 0}
+  maximumSteps: 30
 --- !u!95 &4335335229679773408
 Animator:
   serializedVersion: 5

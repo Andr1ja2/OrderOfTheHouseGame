@@ -9,18 +9,24 @@ public class Clock : MonoBehaviour
     public int minute;       // 0 to 59
     public string period;    // AM or PM
 
+    public bool stop = false;
+
     private float timeAccumulator = 0f;
     private float secondsPerInGameMinute = 0.5f; // 30 sec per hour => 0.5 sec per minute
 
+
+
     private void Start()
     {
-        hour = 6;
+        hour = 18;
         minute = 0;
         UpdatePeriod();
     }
 
     private void Update()
     {
+        if (stop) return;
+
         timeAccumulator += Time.deltaTime;
 
         if (timeAccumulator >= secondsPerInGameMinute)
@@ -43,15 +49,6 @@ public class Clock : MonoBehaviour
                 hour = 0;
         }
 
-        if (GameManager.instance.roomController.currentRoom == GameManager.instance.roomController.livingRoom)
-        {
-            if (hour < 6) // Rule 1 00 to 06
-            {
-                string deathText = GameManager.instance.pinBoard.hasRule1 ? string.Empty : "Dad seems to get mad when I stay in the living room late at night";
-                GameManager.instance.levelController.Death(deathText, 1);
-            }
-        }
-
         UpdatePeriod();
     }
 
@@ -72,7 +69,8 @@ public class Clock : MonoBehaviour
 
     public void DisplayTime()
     {
-        GameManager.instance.dialogueController.StartDialogue(new string[] { ("The clock reads " + GetFormattedTime()) });
+        if (GameManager.instance.playerController.FacingDirection == Vector2.up)
+            GameManager.instance.dialogueController.StartDialogue(new string[] { ("The clock reads " + GetFormattedTime()) });
     }
 
 

@@ -11,8 +11,10 @@ public class EndScript : MonoBehaviour
 
     private IEnumerator EndLevel()
     {
-        GameManager.instance.fadeEffectAnimator.SetTrigger("fadeIn");
-        yield return new WaitForSecondsRealtime(GameManager.instance.fadeEffectAnimator.GetCurrentAnimatorStateInfo(0).length);
+        InputController.actionsEnabled = false;
+        FadeEffectAnimator.instance.FadeIn();
+        yield return new WaitForSecondsRealtime(FadeEffectAnimator.instance.animator.GetCurrentAnimatorStateInfo(0).length);
+        Destroy(GameManager.instance.gameObject);
         SceneManager.LoadScene("EndScene");
     }
 

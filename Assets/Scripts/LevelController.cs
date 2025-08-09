@@ -53,11 +53,13 @@ public class LevelController : MonoBehaviour
         Destroy(note.gameObject);
     }
 
-    public void Death(string noteText, int rulenumber) // add fade effect
+    public void DeathButton() { Death(); }
+
+    public void Death(string noteText = "", int rulenumber = 0)
     {
         InputController.actionsEnabled = false;
         GameManager.instance.playerController.animator.enabled = false;
-        GameManager.instance.fadeEffectAnimator.SetTrigger("fadeIn");
+        FadeEffectAnimator.instance.FadeIn();
         GameObject spawnedNote = null;
         if (noteText != string.Empty)
         {
@@ -74,13 +76,13 @@ public class LevelController : MonoBehaviour
     IEnumerator WaitForDeath(GameObject spawnedNote)
     {
         // Ensures screen is balck when player is moving back to start position
-        yield return new WaitForSecondsRealtime(GameManager.instance.fadeEffectAnimator.GetCurrentAnimatorStateInfo(0).length); 
+        yield return new WaitForSecondsRealtime(FadeEffectAnimator.instance.animator.GetCurrentAnimatorStateInfo(0).length);
         GameManager.instance.ResetValues.Invoke();
         if (spawnedNote != null) spawnedNote.SetActive(true);
         JunkDetector.RefreshAllJunk();
-        SceneManager.LoadScene("HouseScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameManager.instance.playerController.animator.enabled = true;
-        GameManager.instance.fadeEffectAnimator.SetTrigger("fadeOut"); // FadeOut is called only after the scene is loaded
+        FadeEffectAnimator.instance.FadeOut(); // FadeOut is called only after the scene is loaded
         InputController.actionsEnabled = true;
     }
 }

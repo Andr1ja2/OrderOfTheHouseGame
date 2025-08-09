@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,10 @@ public class DialogueController : MonoBehaviour
     //make Activate function here
     public void StartDialogue(string[] lines)
     {
-        dialogue.lines = lines;
-        dialogue.Activate();
+        if (lines.Length > 0 && !Array.Exists(lines, element => element == string.Empty))
+        {
+            dialogue.lines = lines;
+            dialogue.Activate();
+        }
     }
 }

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 FacingDirection;
     public JunkDetector JunkDetector;
     public Animator animator;
+    public int maximumSteps = 30;
 
     SpriteRenderer spriteRenderer;
 
@@ -95,22 +96,36 @@ public class PlayerController : MonoBehaviour
 
     private void Move(Vector2 dir)
     {
+        FacingDirection = dir;
         if (CanMove(dir))
         {
             animator.SetTrigger("Move");
             transform.position += (Vector3)dir;
             stepCount++;
+            GameManager.instance.stepCounter.text = stepCount.ToString("D2");
             JunkDetector.RefreshJunk();
 
-            if (die)
+            if (PlayerPrefs.GetInt("cheatsOn", 0) == 0)
             {
-                string deathText = GameManager.instance.pinBoard.hasRule3 ? string.Empty : "Dad doesn't like it when I get mud on the carpets";
-                GameManager.instance.levelController.Death(deathText, 3);
-            }
-            else if (stepCount > 50)
-            {
-                string deathText = GameManager.instance.pinBoard.hasRule2 ? string.Empty : "I think dad gets realy mad when I make a lot of noise";
-                GameManager.instance.levelController.Death(deathText, 2);
+                if (die)
+                {
+                    string deathText = GameManager.instance.pinBoard.hasRule3 ? string.Empty : "Dad doesn't like it when I get mud on the carpets";
+                    GameManager.instance.levelController.Death(deathText, 3);
+                }
+                else if (stepCount > maximumSteps)
+                {
+                    string deathText = GameManager.instance.pinBoard.hasRule2 ? string.Empty : "I think dad gets realy mad when I make a lot of noise";
+                    GameManager.instance.levelController.Death(deathText, 2);
+                }
+                else if (/*GameManager.instance.clock.hour > 22 &&*/ GameManager.instance.clock.hour < 6)
+                {
+                    if (GameManager.instance.roomController.currentRoom == GameManager.instance.roomController.livingRoom ||
+                        GameManager.instance.roomController.currentRoom == GameManager.instance.roomController.kitchenRoom)
+                    {
+                        string deathText = GameManager.instance.pinBoard.hasRule1 ? string.Empty : "Dad seems to get mad when I stay in the living room late at night";
+                        GameManager.instance.levelController.Death(deathText, 1);
+                    }
+                }
             }
         }
     }
@@ -142,6 +157,8 @@ public class PlayerController : MonoBehaviour
         FacingDirection = Vector2.down;
         transform.position = startposition;
         stepCount = 0;
+        GameManager.instance.stepCounter.text = stepCount.ToString("D2");
+
         die = false;
     }
 }

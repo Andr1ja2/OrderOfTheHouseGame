@@ -28,16 +28,18 @@ public class PinBoard : MonoBehaviour
 
     public void OpenPinBoard()
     {
+        if (!(GameManager.instance.playerController.FacingDirection == Vector2.up)) return;
+
         GameManager.instance.levelController.headerText.SetActive(true);
         pinBoardText = string.Empty;
         if (hasRule1)
         {
-            pinBoardText += "First Rule: Don't go into the living room between midnight and 6 AM\n";
+            pinBoardText += "First Rule: Don't go into the living room and kitchen between midnight and 6 AM\n";
         }
         if (hasRule2)
         {
-            pinBoardText += "Second Rule: Don't make more than 25 steps per room\n";
-            // counter enable
+            pinBoardText += "Second Rule: Don't make more than 31 steps per room\n";
+            GameManager.instance.stepCounter.gameObject.SetActive(true);
         }
         if (hasRule3)
         {

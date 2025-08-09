@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Chair : MonoBehaviour
 {
-    public string[] firstChairLines;
+    public string[] pickupKeyLines;
 
     GameObject key;
-    bool canCollectKey;
-    bool canClimbChair;
+    public  bool canCollectKey;
+    public bool canClimbChair;
 
     Vector3 startposition;
 
     private void Start()
     {
         GameManager.instance.PushAction += CollectKey;
-        key = GameObject.FindGameObjectWithTag("Key");
 
         startposition = transform.position;
         GameManager.instance.ResetValues += ResetValues;
@@ -26,7 +25,8 @@ public class Chair : MonoBehaviour
         if (canCollectKey && canClimbChair)
         {
             GameManager.instance.inventoryController.hasKey = true;
-            Destroy(key);
+            Destroy(GameObject.FindGameObjectWithTag("Key"));
+            GameManager.instance.dialogueController.StartDialogue((string[])pickupKeyLines.Clone());
         }
     }
 

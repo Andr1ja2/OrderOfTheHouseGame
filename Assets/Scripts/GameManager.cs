@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    // add getter and setter
+    // add getter and setter ?
     public InputController inputController;
     public DialogueController dialogueController;
     public InventoryController inventoryController;
@@ -19,7 +20,8 @@ public class GameManager : MonoBehaviour
     public LevelController levelController;
     public Lightswitch ligthswitch;
     public PinBoard pinBoard;
-    public Animator fadeEffectAnimator;
+    //public Animator fadeEffectAnimator;
+    public TextMeshProUGUI stepCounter;
 
     public Tilemap floorTilemap;
     public Tilemap[] collisionTilemaps;
@@ -45,6 +47,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        InputController.actionsEnabled = true;
+        PlayerController.stepCount = 0;
         JunkDetector.AllJunkDetectors = FindObjectsOfType<JunkDetector>();
     }
 }

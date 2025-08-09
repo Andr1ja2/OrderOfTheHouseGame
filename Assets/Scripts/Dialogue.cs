@@ -67,6 +67,7 @@ public class Dialogue : MonoBehaviour
 
     IEnumerator TypeLine()
     {
+        yield return null; // Pause 1 frame so UI can load before dialogue box starts typing
         foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;

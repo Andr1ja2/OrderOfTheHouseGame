@@ -13,6 +13,8 @@ public class SettingsMenu : MonoBehaviour
     public Slider volumeSlider;
     public Toggle fullscreenToggle;
 
+    public Toggle cheatToggle;
+
     Resolution[] resolutions;
 
     private void Start()
@@ -35,6 +37,7 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
 
         fullscreenToggle.isOn = Screen.fullScreen;
+        cheatToggle.isOn = PlayerPrefs.GetInt("cheatsOn", 0) == 1;
 
         float value;
         audioMixer.GetFloat("Volume", out value);
@@ -56,5 +59,10 @@ public class SettingsMenu : MonoBehaviour
     public void SetFullScreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+    }
+
+    public void SetCheats(bool cheatsOn)
+    {
+        PlayerPrefs.SetInt("cheatsOn", cheatsOn ? 1 : 0);
     }
 }
