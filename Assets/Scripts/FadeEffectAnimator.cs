@@ -43,6 +43,7 @@ public class FadeEffectAnimator : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        FadeOut();
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("fadeIn"))
+            FadeOut();
     }
 }

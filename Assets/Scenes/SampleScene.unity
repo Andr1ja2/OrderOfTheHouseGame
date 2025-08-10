@@ -806,7 +806,7 @@ Transform:
   m_Children:
   - {fileID: 1519454956}
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &169795395
 PrefabInstance:
@@ -3124,6 +3124,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1994847037}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1335798052}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1556980261}
         m_TargetAssemblyTypeName: LevelController, Assembly-CSharp
         m_MethodName: DeathButton
@@ -3627,7 +3651,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4335335229679773409, guid: cde3390bd513a0a4280b2f03c9eb8b01, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4335335229679773409, guid: cde3390bd513a0a4280b2f03c9eb8b01, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4011,7 +4035,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 752781973}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: QuitToMainMenu
+        m_MethodName: QuitToMainMenuButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4587,7 +4611,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649375381}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -4744,7 +4768,7 @@ MonoBehaviour:
   startDialogue:
   - Hello there! (Press "Enter" to skip dialogue lines)
   - Welcome to my house!
-  - I know it's a bit of a mess. I'll move this junk out of the way by pressing "Enter.
+  - I know it's a bit of a mess. I'll move this junk out of the way by pressing "Enter".
   pushDialogue:
   - But pushing isn't the only thing I can do with "Enter".
   - I can also use it to interact with objects such as....
@@ -4811,7 +4835,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.21
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5139,6 +5163,7 @@ MonoBehaviour:
   hasRule1: 0
   hasRule2: 0
   hasRule3: 0
+  glow: {fileID: 0}
 --- !u!61 &716000277
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5178,7 +5203,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &722488906
 GameObject:
@@ -5253,7 +5278,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &752781971
 GameObject:
@@ -5289,7 +5314,7 @@ RectTransform:
   m_Children:
   - {fileID: 1514282736}
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5832,6 +5857,7 @@ MonoBehaviour:
   kidRoom: {fileID: 202202379}
   bathroomRoom: {fileID: 564329434}
   currentRoom: {fileID: 0}
+  roomChangedThisMove: 0
 --- !u!4 &860340209
 Transform:
   m_ObjectHideFlags: 0
@@ -5851,7 +5877,7 @@ Transform:
   - {fileID: 564329437}
   - {fileID: 977739187}
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &860343790
 GameObject:
@@ -6517,7 +6543,7 @@ RectTransform:
   m_Children:
   - {fileID: 1760689860}
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6531,7 +6557,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936792637}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -6765,7 +6791,7 @@ GameObject:
   - component: {fileID: 998109779}
   - component: {fileID: 998109781}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: TutorialDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6804,13 +6830,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998109778}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.5, z: 0.88689005}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.2286716, y: 2.286268, z: 1.0791907}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1513457266}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &998109781
 MonoBehaviour:
@@ -7376,7 +7402,7 @@ Transform:
   m_Children:
   - {fileID: 546585660}
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1111488069
 MonoBehaviour:
@@ -7526,7 +7552,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 073807ca4b0ce894b9add322c3e26b24, type: 2}
   musicSource: {fileID: 552590035}
+  clockSource: {fileID: 0}
+  sfxSource: {fileID: 0}
   backgroundMusic: {fileID: 8300000, guid: 94b2485deaff88944aa0ac9589c441e2, type: 3}
+  backgroundClock: {fileID: 0}
+  pushJunk: {fileID: 0}
+  noPushJunk: {fileID: 0}
+  pickupKey: {fileID: 0}
+  pickupItem: {fileID: 0}
+  death: {fileID: 0}
+  doorUnlock: {fileID: 0}
+  doorLocked: {fileID: 0}
+  lightSwitch: {fileID: 0}
+  pickupNote: {fileID: 0}
+  openBoard: {fileID: 0}
+  clockInteract: {fileID: 0}
+  letterClick: {fileID: 0}
+  endSceneClip: {fileID: 0}
 --- !u!4 &1183287917
 Transform:
   m_ObjectHideFlags: 0
@@ -7756,7 +7798,7 @@ Transform:
   - {fileID: 1262207089}
   - {fileID: 1634562489}
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1215701544
 PrefabInstance:
@@ -9235,7 +9277,7 @@ RectTransform:
   m_Children:
   - {fileID: 1002288032}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9249,7 +9291,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305322653}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -9487,7 +9529,7 @@ Transform:
   m_Children:
   - {fileID: 1187137069}
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1353738585
 MonoBehaviour:
@@ -9666,7 +9708,7 @@ RectTransform:
   m_Children:
   - {fileID: 1093143871}
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9680,7 +9722,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363540867}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -9923,7 +9965,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1462971459
 GameObject:
@@ -9966,7 +10008,7 @@ Transform:
   - {fileID: 85836290}
   - {fileID: 1642450886}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1466722459
 GameObject:
@@ -10294,6 +10336,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 998109780}
   - {fileID: 752781972}
   - {fileID: 156404755}
   - {fileID: 1111488068}
@@ -10310,7 +10353,7 @@ Transform:
   - {fileID: 1353738584}
   - {fileID: 936792638}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1514282735
 GameObject:
@@ -10597,7 +10640,7 @@ Transform:
   m_Children:
   - {fileID: 649375382}
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562775950
 GameObject:
@@ -12558,7 +12601,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1778063219
 PrefabInstance:
@@ -13009,6 +13052,10 @@ MonoBehaviour:
   hasKey: 0
   hasBoots: 0
   hasJacket: 0
+  placeHolders: []
+  keySprite: {fileID: 0}
+  jacketSprite: {fileID: 0}
+  bootsSprite: {fileID: 0}
 --- !u!4 &1974770600
 Transform:
   m_ObjectHideFlags: 0
@@ -13022,7 +13069,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1975877731
 GameObject:
@@ -13106,7 +13153,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1982102153
 GameObject:
@@ -13655,7 +13702,7 @@ RectTransform:
   - {fileID: 795845828}
   - {fileID: 1498511635}
   m_Father: {fileID: 1513457266}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13669,7 +13716,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031670243}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 

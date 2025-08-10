@@ -14,6 +14,7 @@ public class Dialogue : MonoBehaviour
     private int index;
     Color invisible;
     Image dialogueboxImage;
+    bool actionsOn = true;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class Dialogue : MonoBehaviour
     private void Start()
     {
         GameManager.instance.SkipDialogue += Skip;
+        //GameManager.instance.ResetValues += DisableDialogue;
 
         textComponent.text = string.Empty;
     }
@@ -34,6 +36,7 @@ public class Dialogue : MonoBehaviour
         {
             invisible.a = 0.7f;
             dialogueboxImage.color = invisible;
+            actionsOn = InputController.actionsEnabled;
             InputController.actionsEnabled = false;
             StartDialogue();
         }
@@ -82,11 +85,16 @@ public class Dialogue : MonoBehaviour
         }
         else // disabling dialoguebox using alpha because game lags when using SetActive for some reason
         {
-            invisible.a = 0;
-            dialogueboxImage.color = invisible;
-            textComponent.text = string.Empty;
-            Array.Clear(lines, 0, lines.Length);
-            InputController.actionsEnabled = true;
+            DisableDialogue();
         }
+    }
+
+    public void DisableDialogue()
+    {
+        invisible.a = 0;
+        dialogueboxImage.color = invisible;
+        textComponent.text = string.Empty;
+        Array.Clear(lines, 0, lines.Length);
+        InputController.actionsEnabled = actionsOn;
     }
 }

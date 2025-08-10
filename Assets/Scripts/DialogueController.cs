@@ -19,7 +19,6 @@ public class DialogueController : MonoBehaviour
         return DialogueBox.GetComponent<Image>().color.a != 0 || GameManager.instance.levelController.noteCanvas.activeSelf;
     }
 
-    //make Activate function here
     public void StartDialogue(string[] lines)
     {
         if (lines.Length > 0 && !Array.Exists(lines, element => element == string.Empty))

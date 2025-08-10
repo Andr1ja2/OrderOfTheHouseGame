@@ -34,5 +34,6 @@ public class TutorialDoor : MonoBehaviour
         PlayerPrefs.SetInt("TutorialDone", 1);
         Destroy(GameManager.instance.gameObject);
         SceneManager.LoadScene("HouseScene");
+        //FadeEffectAnimator.instance.FadeOut();
     }
 }

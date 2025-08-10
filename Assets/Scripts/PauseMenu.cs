@@ -15,9 +15,16 @@ public class PauseMenu : MonoBehaviour
         GameManager.instance.PauseGame += Pause;
     }
 
-    public void QuitToMainMenu()
+    public void QuitToMainMenuButton()
+    {
+        StartCoroutine(QuitToMainMenu());
+    }
+
+    public IEnumerator QuitToMainMenu()
     {
         Time.timeScale = 1f;
+        FadeEffectAnimator.instance.FadeIn();
+        yield return new WaitForSecondsRealtime(FadeEffectAnimator.instance.animator.GetCurrentAnimatorStateInfo(0).length);
         Destroy(GameManager.instance.gameObject); // reset level
         SceneManager.LoadScene("MainMenuScene");
     }

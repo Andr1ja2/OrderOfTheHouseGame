@@ -9,6 +9,16 @@ public class EndScript : MonoBehaviour
     [SerializeField] string[] linesNoKey;
     [SerializeField] string[] linesNoClothes;
 
+    private void Start()
+    {
+        GameManager.instance.ResetValues += OnResetValues;
+    }
+
+    private void OnResetValues()
+    {
+        var temp = GameManager.instance.PushAction -= OpenDoor;
+    }
+
     private IEnumerator EndLevel()
     {
         InputController.actionsEnabled = false;
@@ -17,6 +27,7 @@ public class EndScript : MonoBehaviour
         yield return new WaitForSecondsRealtime(FadeEffectAnimator.instance.animator.GetCurrentAnimatorStateInfo(0).length);
         Destroy(GameManager.instance.gameObject);
         SceneManager.LoadScene("EndScene");
+        //FadeEffectAnimator.instance.FadeOut();
     }
 
     private void OpenDoor()

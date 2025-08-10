@@ -62,38 +62,12 @@ public class AudioController : MonoBehaviour
     }
 
 
-    // Below code makes object a singleton that gets replaced in the next scene
-    // if there already is one so that I can have different ones where I need
+    // Making a DontDestroyOnLoad object that swaps with a new one if there is one in the loeaded scene
+    // because I need a singleton with different values based on scene
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        AudioController sceneInstance = FindObjectOfType<AudioController>();
-        if (sceneInstance != null && sceneInstance != instance)
-        {
-            Destroy(instance.gameObject);
-            instance = sceneInstance;
-        }
+        if (instance != null) Destroy(instance.gameObject);
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 }

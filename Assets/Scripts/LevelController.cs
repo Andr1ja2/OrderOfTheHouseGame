@@ -14,6 +14,8 @@ public class LevelController : MonoBehaviour
     public TextMeshProUGUI noteTextUI;
     public GameObject headerText;
 
+    bool actionsOn = true;
+    bool firstPickup = true;
 
     private void Start()
     {
@@ -26,7 +28,8 @@ public class LevelController : MonoBehaviour
         if (noteCanvas.activeSelf)
         {
             noteCanvas.SetActive(false);
-            InputController.actionsEnabled = true;
+            InputController.actionsEnabled = actionsOn;
+            GameManager.instance.dialogueController.StartDialogue(new string[] {"This probably belongs on dad's pinboard."});
         }
     }
 
@@ -52,6 +55,8 @@ public class LevelController : MonoBehaviour
         noteTextUI.text = note.noteText;
         headerText.SetActive(false);
         noteCanvas.SetActive(true);
+        GameManager.instance.pinBoard.glow.SetActive(true);
+        actionsOn = InputController.actionsEnabled;
         InputController.actionsEnabled = false;
         Destroy(note.gameObject);
     }
@@ -86,7 +91,7 @@ public class LevelController : MonoBehaviour
         JunkDetector.RefreshAllJunk();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameManager.instance.playerController.animator.enabled = true;
-        FadeEffectAnimator.instance.FadeOut(); // FadeOut is called only after the scene is loaded
+        //FadeEffectAnimator.instance.FadeOut(); // FadeOut is called only after the scene is loaded
         InputController.actionsEnabled = true;
     }
 }

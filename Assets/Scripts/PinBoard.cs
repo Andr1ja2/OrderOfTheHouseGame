@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PinBoard : MonoBehaviour
 {
-    public bool hasRule1 = false;
-    public bool hasRule2 = false;
-    public bool hasRule3 = false;
+    public bool hasRule1 = false; // Clock rule
+    public bool hasRule2 = false; // Step rule
+    public bool hasRule3 = false; // Boots rule
 
     string pinBoardText;
+
+    public GameObject glow;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,6 +33,8 @@ public class PinBoard : MonoBehaviour
         if (!(GameManager.instance.playerController.FacingDirection == Vector2.up)) return;
 
         AudioController.instance.PlaySFX(AudioController.instance.openBoard);
+
+        glow.SetActive(false);
         GameManager.instance.levelController.headerText.SetActive(true);
         pinBoardText = string.Empty;
         if (hasRule1)
@@ -39,7 +43,7 @@ public class PinBoard : MonoBehaviour
         }
         if (hasRule2)
         {
-            pinBoardText += "Second Rule: Don't make more than 31 steps per room\n";
+            pinBoardText += "Second Rule: Don't make more than 30 steps per room\n";
             GameManager.instance.stepCounter.gameObject.SetActive(true);
         }
         if (hasRule3)

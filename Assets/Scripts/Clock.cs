@@ -73,6 +73,10 @@ public class Clock : MonoBehaviour
         {
             AudioController.instance.PlaySFX(AudioController.instance.clockInteract);
             GameManager.instance.dialogueController.StartDialogue(new string[] { ("The clock reads " + GetFormattedTime()) });
+            if (GameManager.instance.pinBoard.hasRule1 && hour > 6)
+            {
+                GameManager.instance.dialogueController.StartDialogue(new string[] { "It's too late to got to the living room or the kitchen...", "I should just go back to bed and try again tomorrow." });
+            }
         }
     }
 

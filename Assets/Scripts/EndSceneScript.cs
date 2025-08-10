@@ -14,6 +14,7 @@ public class EndSceneScript : MonoBehaviour
         FadeEffectAnimator.instance.FadeIn();
         yield return new WaitForSecondsRealtime(FadeEffectAnimator.instance.animator.GetCurrentAnimatorStateInfo(0).length * 2);
         SceneManager.LoadScene("MainMenuScene");
+        //FadeEffectAnimator.instance.FadeOut();
     }
 
     private void Start()
