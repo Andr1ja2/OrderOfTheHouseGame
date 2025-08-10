@@ -35,11 +35,16 @@ public class Lightswitch : MonoBehaviour
 
     private void TurnOnLight()
     {
-        var tempColor = Darkness.color;
-        tempColor.a = 0;
-        Darkness.color = tempColor;
+        if (Darkness.color.a > 0)
+        {
+            AudioController.instance.PlaySFX(AudioController.instance.lightSwitch);
 
-        GameManager.instance.dialogueController.StartDialogue((string[])ligthsOnLines.Clone());
+            var tempColor = Darkness.color;
+            tempColor.a = 0;
+            Darkness.color = tempColor;
+
+            GameManager.instance.dialogueController.StartDialogue((string[])ligthsOnLines.Clone());
+        }   
     }
 
     public void ResetValues()

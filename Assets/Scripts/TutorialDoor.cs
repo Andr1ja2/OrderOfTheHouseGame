@@ -29,6 +29,7 @@ public class TutorialDoor : MonoBehaviour
     {
         InputController.actionsEnabled = false;
         FadeEffectAnimator.instance.FadeIn();
+        AudioController.instance.PlaySFX(AudioController.instance.doorUnlock);
         yield return new WaitForSecondsRealtime(FadeEffectAnimator.instance.animator.GetCurrentAnimatorStateInfo(0).length);
         PlayerPrefs.SetInt("TutorialDone", 1);
         Destroy(GameManager.instance.gameObject);

@@ -7,7 +7,9 @@ public class EndSceneScript : MonoBehaviour
 {
     public IEnumerator SetScene()
     {
-        yield return new WaitForSecondsRealtime(10);
+        yield return new WaitForSecondsRealtime(1);
+        AudioController.instance.PlaySFX(AudioController.instance.endSceneClip);
+        yield return new WaitForSecondsRealtime(9);
         FadeEffectAnimator.instance.animator.speed /= 2;
         FadeEffectAnimator.instance.FadeIn();
         yield return new WaitForSecondsRealtime(FadeEffectAnimator.instance.animator.GetCurrentAnimatorStateInfo(0).length * 2);

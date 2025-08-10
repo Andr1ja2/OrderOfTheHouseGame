@@ -24,6 +24,8 @@ public class Chair : MonoBehaviour
     {
         if (canCollectKey && canClimbChair)
         {
+            AudioController.instance.PlaySFX(AudioController.instance.pickupKey);
+
             GameManager.instance.inventoryController.hasKey = true;
             Destroy(GameObject.FindGameObjectWithTag("Key"));
             GameManager.instance.dialogueController.StartDialogue((string[])pickupKeyLines.Clone());

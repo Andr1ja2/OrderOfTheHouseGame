@@ -70,7 +70,10 @@ public class Clock : MonoBehaviour
     public void DisplayTime()
     {
         if (GameManager.instance.playerController.FacingDirection == Vector2.up)
+        {
+            AudioController.instance.PlaySFX(AudioController.instance.clockInteract);
             GameManager.instance.dialogueController.StartDialogue(new string[] { ("The clock reads " + GetFormattedTime()) });
+        }
     }
 
 

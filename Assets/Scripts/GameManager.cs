@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour
     public LevelController levelController;
     public Lightswitch ligthswitch;
     public PinBoard pinBoard;
-    //public Animator fadeEffectAnimator;
     public TextMeshProUGUI stepCounter;
+    //public Animator fadeEffectAnimator;
 
     public Tilemap floorTilemap;
     public Tilemap[] collisionTilemaps;

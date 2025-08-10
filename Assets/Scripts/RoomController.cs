@@ -12,6 +12,8 @@ public class RoomController : MonoBehaviour
 
     public GameObject currentRoom;
 
+    public bool roomChangedThisMove;
+
     private void Start()
     {
         currentRoom = kidRoom;
@@ -24,10 +26,17 @@ public class RoomController : MonoBehaviour
         currentRoom = room;
         PlayerController.stepCount = 0;
         GameManager.instance.stepCounter.text = "00";
+        roomChangedThisMove = true;
     }
 
     public void ResetValues()
     {
         currentRoom = kidRoom;
+        roomChangedThisMove = false;
+    }
+
+    private void LateUpdate()
+    {
+        roomChangedThisMove = false;
     }
 }

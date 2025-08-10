@@ -32,6 +32,8 @@ public class LevelController : MonoBehaviour
 
     public void PickUpNote(PaperNote note, int rulenumber)
     {
+        AudioController.instance.PlaySFX(AudioController.instance.pickupNote);
+
         switch (rulenumber)
         {
             case 1:
@@ -48,6 +50,7 @@ public class LevelController : MonoBehaviour
                 return;
         }
         noteTextUI.text = note.noteText;
+        headerText.SetActive(false);
         noteCanvas.SetActive(true);
         InputController.actionsEnabled = false;
         Destroy(note.gameObject);
@@ -70,6 +73,7 @@ public class LevelController : MonoBehaviour
             spawnedNote.SetActive(false);
         }
 
+        AudioController.instance.PlaySFX(AudioController.instance.death);
         StartCoroutine(WaitForDeath(spawnedNote));
     }
 

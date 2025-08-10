@@ -13,6 +13,7 @@ public class EndScript : MonoBehaviour
     {
         InputController.actionsEnabled = false;
         FadeEffectAnimator.instance.FadeIn();
+        AudioController.instance.PlaySFX(AudioController.instance.doorUnlock);
         yield return new WaitForSecondsRealtime(FadeEffectAnimator.instance.animator.GetCurrentAnimatorStateInfo(0).length);
         Destroy(GameManager.instance.gameObject);
         SceneManager.LoadScene("EndScene");
@@ -33,6 +34,7 @@ public class EndScript : MonoBehaviour
         }
         else
         {
+            AudioController.instance.PlaySFX(AudioController.instance.doorLocked);
             GameManager.instance.dialogueController.StartDialogue((string[])linesNoKey.Clone());
         }
     }

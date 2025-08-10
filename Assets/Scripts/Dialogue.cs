@@ -53,10 +53,6 @@ public class Dialogue : MonoBehaviour
                 textComponent.text = lines[index];
             }
         }
-        else
-        {
-            GameManager.instance.levelController.headerText.SetActive(false);
-        }
     }
 
     void StartDialogue()
@@ -70,6 +66,7 @@ public class Dialogue : MonoBehaviour
         yield return null; // Pause 1 frame so UI can load before dialogue box starts typing
         foreach (char c in lines[index].ToCharArray())
         {
+            AudioController.instance.PlaySFX(AudioController.instance.letterClick);
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }

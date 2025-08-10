@@ -11,11 +11,16 @@ public class JunkScript : MonoBehaviour
     {
         if (CanMove(dir))
         {
+            AudioController.instance.PlaySFX(AudioController.instance.pushJunk);
+
             transform.position += (Vector3)dir;
 
             // Refresh blocked sides for all
             JunkDetector.RefreshAllJunk();
         }
+        else
+            AudioController.instance.PlaySFX(AudioController.instance.noPushJunk);
+
     }
 
     private bool CanMove(Vector2 dir)

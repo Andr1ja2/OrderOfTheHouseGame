@@ -30,6 +30,7 @@ public class PinBoard : MonoBehaviour
     {
         if (!(GameManager.instance.playerController.FacingDirection == Vector2.up)) return;
 
+        AudioController.instance.PlaySFX(AudioController.instance.openBoard);
         GameManager.instance.levelController.headerText.SetActive(true);
         pinBoardText = string.Empty;
         if (hasRule1)

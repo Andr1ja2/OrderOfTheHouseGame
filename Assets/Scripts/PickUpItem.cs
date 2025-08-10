@@ -24,6 +24,7 @@ public class PickUpItem : MonoBehaviour
 
     private void Pickup()
     {
+        AudioController.instance.PlaySFX(AudioController.instance.pickupItem);
         if (this.gameObject.CompareTag("Boots"))
         {
             GameManager.instance.inventoryController.hasBoots = true;
