@@ -505,6 +505,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 267585586}
+  - {fileID: 1346885617}
   m_Father: {fileID: 1756239012}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -524,6 +525,7 @@ MonoBehaviour:
   noteCanvas: {fileID: 267585582}
   noteTextUI: {fileID: 2068473442}
   headerText: {fileID: 505697714}
+  noteSpawnpoint: {fileID: 1346885617}
 --- !u!1 &83162453
 GameObject:
   m_ObjectHideFlags: 0
@@ -17745,11 +17747,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4335335229679773409, guid: cde3390bd513a0a4280b2f03c9eb8b01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.25
+      value: 11.275
       objectReference: {fileID: 0}
     - target: {fileID: 4335335229679773409, guid: cde3390bd513a0a4280b2f03c9eb8b01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.75
+      value: -7.725
       objectReference: {fileID: 0}
     - target: {fileID: 4335335229679773409, guid: cde3390bd513a0a4280b2f03c9eb8b01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20300,6 +20302,7 @@ GameObject:
   - component: {fileID: 959203225}
   - component: {fileID: 959203224}
   - component: {fileID: 959203223}
+  - component: {fileID: 959203226}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Untagged
@@ -20362,6 +20365,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &959203226
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959203222}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &969829350
 GameObject:
   m_ObjectHideFlags: 0
@@ -23193,6 +23217,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1346885616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1346885617}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1346885617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346885616}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.5, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 57928595}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1355273249
 GameObject:
   m_ObjectHideFlags: 0
@@ -25899,7 +25954,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: 0, y: -1.4146833}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25910,7 +25965,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.5}
+  m_Size: {x: 1, y: 5.2293663}
   m_EdgeRadius: 0
 --- !u!1001 &1884746929
 PrefabInstance:
@@ -33346,7 +33401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083247100}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.25, y: -5.75, z: -9.807699}
+  m_LocalPosition: {x: 11.275, y: -7.7249994, z: -9.807699}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33561,7 +33616,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1295381572}
   m_HandleRect: {fileID: 2141116246}
   m_Direction: 0
-  m_MinValue: -30
+  m_MinValue: -80
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0

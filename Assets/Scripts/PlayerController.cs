@@ -160,12 +160,12 @@ public class PlayerController : MonoBehaviour
                 string deathText = GameManager.instance.pinBoard.hasRule2 ? string.Empty : "I think dad gets really mad when I make a lot of noise";
                 GameManager.instance.levelController.Death(deathText, 2);
             }
-            else if (GameManager.instance.clock.hour < 6)
+            else if (GameManager.instance.clock.hour < 6 )
             {
                 if (GameManager.instance.roomController.currentRoom == GameManager.instance.roomController.livingRoom ||
                     GameManager.instance.roomController.currentRoom == GameManager.instance.roomController.kitchenRoom)
                 {
-                    string deathText = GameManager.instance.pinBoard.hasRule1 ? string.Empty : "Dad seems to get mad when I stay in the living room late at night";
+                    string deathText = GameManager.instance.pinBoard.hasRule1 ? string.Empty : "Dad seems to get mad when I stay in the living room or kitchen late at night. I think it's best I go to bed";
                     GameManager.instance.levelController.Death(deathText, 1);
                 }
             }

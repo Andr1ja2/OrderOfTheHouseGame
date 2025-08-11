@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BedScript : MonoBehaviour
 {
-    public string[] outOfBedLines; //ADD!
-    int i = 0, j= 0;
+    public string[] outOfBedLines;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,7 +12,6 @@ public class BedScript : MonoBehaviour
         {
             {
                 GameManager.instance.PushAction += Sleep;
-                Debug.Log(i++);
             }
         }
     }
@@ -23,8 +21,6 @@ public class BedScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameManager.instance.PushAction -= Sleep;
-            Debug.Log(j++);
-
         }
     }
 

@@ -790,7 +790,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1119135151}
   m_HandleRect: {fileID: 1578383927}
   m_Direction: 0
-  m_MinValue: -30
+  m_MinValue: -80
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
@@ -2425,7 +2425,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.9677419, y: 1}
+  m_AnchorMax: {x: 0.9876543, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2840,20 +2840,20 @@ MonoBehaviour:
   clockSource: {fileID: 0}
   sfxSource: {fileID: 0}
   backgroundMusic: {fileID: 8300000, guid: 94b2485deaff88944aa0ac9589c441e2, type: 3}
-  backgroundClock: {fileID: 0}
-  pushJunk: {fileID: 0}
-  noPushJunk: {fileID: 0}
-  pickupKey: {fileID: 0}
-  pickupItem: {fileID: 0}
-  death: {fileID: 0}
-  doorUnlock: {fileID: 0}
-  doorLocked: {fileID: 0}
-  lightSwitch: {fileID: 0}
-  pickupNote: {fileID: 0}
-  openBoard: {fileID: 0}
-  clockInteract: {fileID: 0}
-  letterClick: {fileID: 0}
-  endSceneClip: {fileID: 0}
+  backgroundClock: {fileID: 8300000, guid: 8f565ee40f90885449dcaeb58ba8c628, type: 3}
+  pushJunk: {fileID: 8300000, guid: 2773d3bd3430f414f9513de8d7878ddc, type: 3}
+  noPushJunk: {fileID: 8300000, guid: e4e1c89a760d3814b9aee3f6ea65bae8, type: 3}
+  pickupKey: {fileID: 8300000, guid: 8550bfbf66de9a342a4ea6a07278df63, type: 3}
+  pickupItem: {fileID: 8300000, guid: 302adef44f954be4e9bd2f5416551882, type: 3}
+  death: {fileID: 8300000, guid: 48c62ecce24e3e14787f2210bbe20aff, type: 3}
+  doorUnlock: {fileID: 8300000, guid: 069a4c86b92cd714aa9f241493d232cb, type: 3}
+  doorLocked: {fileID: 8300000, guid: 8ec932ed6affae94c87a66f582f84f1a, type: 3}
+  lightSwitch: {fileID: 8300000, guid: 23bfff5d0e0b170448811e4264df18a7, type: 3}
+  pickupNote: {fileID: 8300000, guid: adbfb77272e97b9448ccf5d53972d131, type: 3}
+  openBoard: {fileID: 8300000, guid: eaf419c531ad5bf41b3ce8f94806e3e9, type: 3}
+  clockInteract: {fileID: 8300000, guid: 50bc900ba5cf9b74884a949a83e68224, type: 3}
+  letterClick: {fileID: 8300000, guid: 7aad512ce03bc3547a73c837ebe15f2b, type: 3}
+  endSceneClip: {fileID: 8300000, guid: 744890c60d393fe4c87016dbf3e273e4, type: 3}
 --- !u!4 &1318836954
 Transform:
   m_ObjectHideFlags: 0
@@ -3242,8 +3242,8 @@ RectTransform:
   m_Father: {fileID: 1102279031}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.9677419, y: 0}
-  m_AnchorMax: {x: 0.9677419, y: 1}
+  m_AnchorMin: {x: 0.9876543, y: 0}
+  m_AnchorMax: {x: 0.9876543, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

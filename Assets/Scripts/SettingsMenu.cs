@@ -32,6 +32,10 @@ public class SettingsMenu : MonoBehaviour
                 currentResolutionIndex = i;
             }
         }
+
+        options.Reverse();
+        currentResolutionIndex = options.Count - 1 - currentResolutionIndex;
+
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();

@@ -6,12 +6,12 @@ public class DialogueStarter : MonoBehaviour
 {
     public string[] lines;
 
-    BoxCollider2D collider;
+    BoxCollider2D collider2d;
     [SerializeField] bool oneTime;
 
     private void Start()
     {
-        collider = GetComponent<BoxCollider2D>();
+        collider2d = GetComponent<BoxCollider2D>();
         GameManager.instance.ResetValues += ResetValues;
     }
 
@@ -20,13 +20,13 @@ public class DialogueStarter : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameManager.instance.dialogueController.StartDialogue((string[])lines.Clone());
-            if (oneTime) collider.enabled = false;
+            if (oneTime) collider2d.enabled = false;
         }
     }
 
     public void ResetValues()
     {
-        if (collider != null)
-            collider.enabled = true;
+        if (collider2d != null)
+            collider2d.enabled = true;
     }
 }

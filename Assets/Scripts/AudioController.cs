@@ -58,7 +58,8 @@ public class AudioController : MonoBehaviour
 
     public void PlaySFX(AudioClip clip)
     {
-        sfxSource.PlayOneShot(clip);
+        if (clip != null)
+            sfxSource.PlayOneShot(clip);
     }
 
 

@@ -13,6 +13,7 @@ public class LevelController : MonoBehaviour
     public GameObject noteCanvas;
     public TextMeshProUGUI noteTextUI;
     public GameObject headerText;
+    public Transform noteSpawnpoint;
 
     bool actionsOn = true;
     bool firstPickup = true;
@@ -29,7 +30,19 @@ public class LevelController : MonoBehaviour
         {
             noteCanvas.SetActive(false);
             InputController.actionsEnabled = actionsOn;
-            GameManager.instance.dialogueController.StartDialogue(new string[] {"This probably belongs on dad's pinboard."});
+
+            PaperNote existingNote = GetComponentInChildren<PaperNote>(true);
+            if (existingNote != null)
+            {
+                existingNote.gameObject.SetActive(true);
+                return;
+            }
+
+            if (firstPickup)
+            {
+                GameManager.instance.dialogueController.StartDialogue(new string[] { "This probably belongs on dad's pinboard.", "I should check it out."});
+                firstPickup = false;
+            }
         }
     }
 
@@ -71,8 +84,10 @@ public class LevelController : MonoBehaviour
         GameObject spawnedNote = null;
         if (noteText != string.Empty)
         {
-            spawnedNote = Instantiate(paperNotePrefab, this.transform);
-            spawnedNote.transform.position = GameManager.instance.playerController.transform.position;
+            PaperNote[] existingNotes = this.GetComponentsInChildren<PaperNote>();
+            foreach(PaperNote note in existingNotes) note.gameObject.SetActive(false);
+            spawnedNote = Instantiate(paperNotePrefab, noteSpawnpoint.position, Quaternion.identity);
+            spawnedNote.transform.SetParent(this.transform, true);
             spawnedNote.GetComponent<PaperNote>().noteText = noteText;
             spawnedNote.GetComponent<PaperNote>().rulenumber = rulenumber;
             spawnedNote.SetActive(false);
